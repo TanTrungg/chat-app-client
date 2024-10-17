@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
 //import { authService } from "./services/authService";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Chat from "./pages/chat/Chat";
 import Verify from "./pages/verify/Verify";
@@ -44,29 +42,29 @@ function App() {
   // );
 
   //---
-  const navigate = useNavigate();
-  const storedAuth = localStorage.getItem("auth");
-  useEffect(() => {
-    // const loginWithStoredAuth = async () => {
-    //   if (storedAuth) {
-    //     try {
-    //       const res: AxiosResponse = await authService.handleGetUserLogin(); // Chờ kết quả từ API
-    //       const { status, data } = res;
-    //       if (status === 200) {
-    //         console.log("Get user successful:", data);
-    //         navigate("/chat-app");
-    //       } else {
-    //         console.error("Get user failed:", data);
-    //       }
-    //     } catch (error: any) {
-    //       console.error("Error during login:", error.message);
-    //     }
-    //   } else {
-    //     navigate("/login");
-    //   }
-    // };
-    //loginWithStoredAuth(); // Gọi hàm async bên trong useEffect
-  }, [storedAuth, navigate]); // Chỉ thực hiện lại khi storedAuth thay đổi
+  //const navigate = useNavigate();
+  //const storedAuth = localStorage.getItem("auth");
+  //useEffect(() => {
+  // const loginWithStoredAuth = async () => {
+  //   if (storedAuth) {
+  //     try {
+  //       const res: AxiosResponse = await authService.handleGetUserLogin(); // Chờ kết quả từ API
+  //       const { status, data } = res;
+  //       if (status === 200) {
+  //         console.log("Get user successful:", data);
+  //         navigate("/chat-app");
+  //       } else {
+  //         console.error("Get user failed:", data);
+  //       }
+  //     } catch (error: any) {
+  //       console.error("Error during login:", error.message);
+  //     }
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
+  //loginWithStoredAuth(); // Gọi hàm async bên trong useEffect
+  //}, [storedAuth, navigate]); // Chỉ thực hiện lại khi storedAuth thay đổi
 
   return (
     <>
