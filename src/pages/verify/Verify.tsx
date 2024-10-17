@@ -21,7 +21,7 @@ const Verify = () => {
     const verifyAccount = async () => {
       try {
         const response = await axios.get(
-          `https://localhost:7235/api/accounts/verification/${token}`
+          `https://plum-village.azurewebsites.net/api/accounts/verification/${token}`
         );
         console.log("res", response);
         setVerificationStatus("success");
