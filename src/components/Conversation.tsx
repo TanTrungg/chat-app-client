@@ -250,12 +250,17 @@ const Conversation = ({ selectUser, currentUser }: Props) => {
                           <div className="text-xs mt-1 text-gray-500">
                             {formatDate(message.sendAt)}
                           </div>
-                          <MdDeleteForever
-                            className="absolute top-1 right-1 text-red-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor-pointer"
-                            onClick={() =>
-                              handleDeleteMessage(message.id, conversation!.id)
-                            }
-                          />
+                          {message.sender.id === currentUser?.account.id && (
+                            <MdDeleteForever
+                              className="absolute top-1 right-1 text-red-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor-pointer"
+                              onClick={() =>
+                                handleDeleteMessage(
+                                  message.id,
+                                  conversation!.id
+                                )
+                              }
+                            />
+                          )}
                         </div>
                       </div>
                     ))}
