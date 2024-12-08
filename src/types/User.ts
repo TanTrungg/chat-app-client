@@ -1,11 +1,13 @@
 export interface UserModel {
   id: string;
+  role: string;
   email: string;
   phoneNumber: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   avatar: string;
   isOnline: boolean;
-  lastOnline: Date;
+  gender: string;
   createdAt: Date;
 }
 

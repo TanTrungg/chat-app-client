@@ -16,7 +16,7 @@ const Chat1 = ({ user }: Props) => {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWNmYjc4LWEwMjAtNDZhNC1hMzBlLWI1YTdhNmY3MzhmMCIsInJvbGUiOiJVc2VyIiwic3RhdHVzIjoiQWN0aXZlIiwibmJmIjoxNzI3NzU1MTE3LCJleHAiOjE3Mjc4NDE1MTcsImlhdCI6MTcyNzc1NTExN30.y7EUX0NM3E-P344CtIYaNmPYwzYD-OMl5XHBV1O0x-Q";
 
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7134/chat-hub", {
+      .withUrl("https://plum-village.azurewebsites.net/chat-hub", {
         headers: { Authorization: `Bearer ${token}` },
         transport: signalR.HttpTransportType.LongPolling,
       })

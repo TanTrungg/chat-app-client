@@ -8,3 +8,23 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Độ rộng của scrollbar */
+  height: 8px; /* Chiều cao của scrollbar (trong trường hợp cuộn ngang) */
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Màu nền của track */
+  border-radius: 8px; /* Bo góc track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Màu của thanh kéo */
+  border-radius: 8px; /* Bo góc thanh kéo */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Màu của thanh kéo khi hover */
+}

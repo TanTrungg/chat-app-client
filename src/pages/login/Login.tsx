@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Loading from "@/components/loading/Loading";
 import { authService } from "@/services/authService";
 import { userService } from "@/services/userService";
+import { showErrorAlert, showSuccessAlert } from "@/toastify/toastify";
+
 import { AuthData, LoginForm, UserRegister } from "@/types/Auth";
 import { AxiosResponse } from "axios";
 import React, { useState } from "react";
@@ -10,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: "",
@@ -26,26 +30,36 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
       const res: AxiosResponse = await authService.handleLogin(loginForm);
       const { status, data } = res;
 
       if (status === 200) {
-        //console.log("Login successful:", data);
+        console.log("Login successful:", data);
         const authData: AuthData = data;
 
         localStorage.setItem("auth", JSON.stringify(authData));
         navigate("/chat-app");
+        showSuccessAlert("login thành công");
       } else {
+        showErrorAlert("Sai thông tin đăng nhập");
+
         console.error("Login failed:", data);
       }
     } catch (error: any) {
+      console.log("error");
+      showErrorAlert("Sai thông tin đăng nhập");
+
       console.error("Error during login:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleRegister = async (e: React.FormEvent) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
       const res: AxiosResponse = await userService.handleRegisterUser(
@@ -54,22 +68,30 @@ const Login = () => {
       const { status, data } = res;
 
       if (status === 201) {
+        showSuccessAlert("Đăng ký tài khoản thành công");
         console.log("Register successful:", data);
         setIsRegistering(false);
       } else {
         console.error("Login failed:", data);
       }
     } catch (error: any) {
+      showErrorAlert("Đăng ký tài khoản không thành công");
       console.error("Error during login:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+    <div
+      className={`flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 ${
+        isLoading ? "opacity-80 pointer-events-none" : ""
+      } `}
+    >
+      {isLoading && <Loading />}
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         {isRegistering ? (
           <form onSubmit={handleRegister} className="space-y-4">

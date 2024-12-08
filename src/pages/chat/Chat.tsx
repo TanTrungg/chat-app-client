@@ -2,7 +2,8 @@ import Conversation from "@/components/Conversation";
 import ListUser from "@/components/ListUser";
 import { AuthData } from "@/types/Auth";
 import { UserModel } from "@/types/User";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const getAuthData = (): AuthData | null => {
   const authDataString = localStorage.getItem("auth");
@@ -22,8 +23,16 @@ const getAuthData = (): AuthData | null => {
 
 const Chat = () => {
   const currentUser: AuthData | null = getAuthData();
+  const navigate = useNavigate();
+
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [selectUser, setSelectUser] = useState<UserModel>();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
 
   return (
     <div

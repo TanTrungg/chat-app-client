@@ -14,5 +14,5 @@ export interface UserRegister {
 
 export interface AuthData {
   accessToken: string;
-  user: UserModel;
+  account: UserModel;
 }

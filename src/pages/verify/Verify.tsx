@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { useParams } from "react-router-dom";
 import { FaCheckCircle, FaInfoCircle } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
@@ -12,10 +11,10 @@ const Verify = () => {
   );
   const [isLoading, setIsLoading] = useState(true);
 
-  const isCalled = useRef(false); // Biến này giúp ngăn việc gọi lại API
+  const isCalled = useRef(false);
 
   useEffect(() => {
-    if (isCalled.current) return; // Nếu đã gọi API, bỏ qua
+    if (isCalled.current) return;
     isCalled.current = true;
 
     const verifyAccount = async () => {
