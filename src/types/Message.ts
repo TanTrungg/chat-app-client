@@ -2,7 +2,8 @@ import { UserModel } from "./User";
 
 export interface CreateMessage {
   conversationId: string | undefined;
-  senderId: string;
+  senderId: string | undefined;
+  receiverId: string | undefined;
   content: string;
 }
 
@@ -21,6 +22,7 @@ export interface ConversationParticipants {
 export interface Message {
   id: string;
   content: string;
+  isRead: boolean;
   sendAt: Date;
   sender: UserModel;
 }
