@@ -144,6 +144,7 @@ const Conversation = ({ selectUser, currentUser }: Props) => {
       const message: CreateMessage = {
         conversationId: conversation?.id,
         senderId: currentUser.account.id,
+        receiverId: selectUser?.id,
         content: inputMessage,
       };
 
