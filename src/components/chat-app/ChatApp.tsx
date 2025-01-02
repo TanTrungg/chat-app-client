@@ -19,7 +19,7 @@ const ChatApp = () => {
     useState<ConversationViewModel | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
-  const [error, setError] = useState<string>("");
+  const [, setError] = useState<string>("");
   const [newMessageNoti, setNewMessageNoti] = useState<string[]>([]);
 
   const [isLoading, setLoading] = useState<boolean>(true);
@@ -171,6 +171,7 @@ const ChatApp = () => {
         .catch((error) => console.error("Error stopping connection: ", error));
       connectionRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   return (
